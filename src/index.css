@@ -1,4 +1,37 @@
 @import "tailwindcss";
-body{
-    font-family: "Oxygen", sans-serif;
+@plugin "../node_modules/tailgrids/plugin.js";
+
+@font-face {
+    font-family: "Univers Next W1G";
+    src: url("/fonts/UniversNextW1G-Regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Univers Next W1G";
+    src: url("/fonts/UniversNextW1G-Medium.woff2") format("woff2");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Univers Next W1G";
+    src: url("/fonts/UniversNextW1G-Bold.woff2") format("woff2");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+    body {
+        @apply bg-white text-dark;
+        font-family: "Univers Next W1G", sans-serif;
+    }
+
+    .dark body,
+    .dark {
+        @apply bg-dark text-white;
+    }
 }
