@@ -13,12 +13,12 @@ export default function App() {
 
     gsap.fromTo(
       chars,
-      { opacity: 0, y: 80, rotateX: -90 },
+      { opacity: 0, y: 80, rotateX: -80 },
       {
         opacity: 1,
         y: 0,
         rotateX: 0,
-        duration: 0.8,
+        duration: 1,
         stagger: 0.03,
         ease: "back.out(1.7)",
       }
@@ -66,8 +66,8 @@ export default function App() {
             </div>
           </div>
           <div className="absolute top-0 bottom-0 left-0 right-0 flex justify-center items-center z-10">
-            <div ref={splitRef} className="space-y-2 w-full container">
-              <h2>Since 2017</h2>
+            <div ref={splitRef} className="space-y-2 container">
+              <h2 className="text-xl">Since 2017</h2>
               <h1 className="text-8xl font-semibold text-start">
                 {splitText("Software")}
               </h1>
@@ -76,6 +76,11 @@ export default function App() {
               </h1>
             </div>
           </div>
+        </div>
+      </section>
+      <section className="h-[80vh]">
+        <div className="container">
+          <h1>Porfolio</h1>
         </div>
       </section>
     </>
