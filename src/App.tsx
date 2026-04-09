@@ -3,7 +3,7 @@ import Header from "./components/header";
 import { Button } from "./components/tailgrids/core/button";
 import gsap from "gsap";
 import Loader from "./components/loader";
-import { motion, useScroll, useTransform } from "motion/react";
+import { motion, useScroll, useTransform, useSpring } from "motion/react";
 
 export default function App() {
   const splitRef = useRef<HTMLDivElement>(null);
@@ -36,9 +36,15 @@ export default function App() {
     offset: ["start end", "end start"],
   });
 
-  const xLeft = useTransform(scrollYProgress, [0, 1], ["-200%", "0%"]);
-  const xRight = useTransform(scrollYProgress, [0, 1], ["200%", "0%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.4], [0, 1]);
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
+
+  const xLeft = useTransform(smoothProgress, [0, 1], ["-200%", "0%"]);
+  const xRight = useTransform(smoothProgress, [0, 1], ["200%", "0%"]);
+  const opacity = useTransform(smoothProgress, [1, .5], [0, 1]);
 
   function splitText(text: string) {
     return text.split("").map((char, i) => (
