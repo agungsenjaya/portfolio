@@ -1,13 +1,18 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import Header from "./components/header";
 import { Button } from "./components/tailgrids/core/button";
 import gsap from "gsap";
+import Loader from "./components/loader";
+import { motion, useScroll, useTransform } from "motion/react";
 
 export default function App() {
   const splitRef = useRef<HTMLDivElement>(null);
+  const [loading, setLoading] = useState(true);
+
+  const handleComplete = useCallback(() => setLoading(false), []);
 
   useEffect(() => {
-    if (!splitRef.current) return;
+    if (loading || !splitRef.current) return;
 
     const chars = splitRef.current.querySelectorAll(".split-char");
 
@@ -21,9 +26,19 @@ export default function App() {
         duration: 1,
         stagger: 0.03,
         ease: "back.out(1.7)",
-      }
+      },
     );
-  }, []);
+  }, [loading]);
+
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const xLeft = useTransform(scrollYProgress, [0, 1], ["-200%", "0%"]);
+  const xRight = useTransform(scrollYProgress, [0, 1], ["200%", "0%"]);
+  const opacity = useTransform(scrollYProgress, [0, 0.4], [0, 1]);
 
   function splitText(text: string) {
     return text.split("").map((char, i) => (
@@ -39,6 +54,7 @@ export default function App() {
 
   return (
     <>
+      {loading && <Loader onComplete={handleComplete} />}
       <Header />
       <section>
         <div className="relative">
@@ -66,7 +82,7 @@ export default function App() {
             </div>
           </div>
           <div className="absolute top-0 bottom-0 left-0 right-0 flex justify-center items-center z-10">
-            <div ref={splitRef} className="space-y-2 container">
+            {/* <div ref={splitRef} className="space-y-2 container">
               <h2 className="text-xl">Since 2017</h2>
               <h1 className="text-8xl font-semibold text-start">
                 {splitText("Software")}
@@ -74,6 +90,22 @@ export default function App() {
               <h1 className="text-8xl font-semibold text-end">
                 {splitText("Engineer")}
               </h1>
+            </div> */}
+            <div className="mx-auto max-w-8xl">
+              <div ref={sectionRef} className="space-y-2">
+                <motion.h1
+                  className="text-8xl font-semibold text-start"
+                  style={{ x: xLeft, opacity }}
+                >
+                  Software
+                </motion.h1>
+                <motion.h1
+                  className="text-8xl font-semibold text-right"
+                  style={{ x: xRight, opacity }}
+                >
+                  Engineer
+                </motion.h1>
+              </div>
             </div>
           </div>
         </div>
