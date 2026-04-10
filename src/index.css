@@ -2,6 +2,13 @@
 @plugin "../node_modules/tailgrids/plugin.js";
 
 @font-face {
+    font-family: "Gt Super";
+    src: url("/fonts/gt-super-400-normal.woff") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
     font-family: "Univers Next W1G";
     src: url("/fonts/UniversNextW1G-Regular.woff2") format("woff2");
     font-weight: 400;
@@ -34,4 +41,12 @@
     .dark {
         @apply bg-dark text-white;
     }
+}
+
+.font-super {
+    font-family: "Gt Super";
+}
+
+p{
+    @apply text-dark-6
 }

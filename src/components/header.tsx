@@ -3,14 +3,14 @@ import React from "react";
 export default function Header() {
   return (
     <header className="py-4">
-      <div className="mx-auto max-w-4xl flex justify-between">
+      <div className="container flex justify-between">
         <div className="flex gap-2 items-center">
           <div className="animate-spin [animation-duration:3000ms]">
             <img src="/img/icon.png" className="w-[18px]" alt="" />
           </div>
-          <h4 className="font-bold text-xl">Agung Senjaya</h4>
+          <h4 className="text-xl font-semibold">Agung Senjaya</h4>
         </div>
-        <ul className="flex gap-18">
+        <ul className="flex gap-18 text-xl">
           <li className="underline underline-offset-8">
             <a href="#about">About</a>
           </li>

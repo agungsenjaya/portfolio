@@ -1,34 +1,25 @@
-import React, { useEffect, useRef, useState, useCallback } from "react";
+import React, { useEffect, useRef } from "react";
 import Header from "./components/header";
 import { Button } from "./components/tailgrids/core/button";
 import gsap from "gsap";
-import Loader from "./components/loader";
 import { motion, useScroll, useTransform, useSpring } from "motion/react";
+import {
+  RiFacebookFill,
+  RiInstagramFill,
+  RiLinkedinBoxFill,
+} from "react-icons/ri";
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/tailgrids/core/card";
 
 export default function App() {
   const splitRef = useRef<HTMLDivElement>(null);
-  const [loading, setLoading] = useState(true);
-
-  const handleComplete = useCallback(() => setLoading(false), []);
-
-  useEffect(() => {
-    if (loading || !splitRef.current) return;
-
-    const chars = splitRef.current.querySelectorAll(".split-char");
-
-    gsap.fromTo(
-      chars,
-      { opacity: 0, y: 80, rotateX: -80 },
-      {
-        opacity: 1,
-        y: 0,
-        rotateX: 0,
-        duration: 1,
-        stagger: 0.03,
-        ease: "back.out(1.7)",
-      },
-    );
-  }, [loading]);
 
   const sectionRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -42,9 +33,9 @@ export default function App() {
     restDelta: 0.001,
   });
 
-  const xLeft = useTransform(smoothProgress, [0, 1], ["-200%", "0%"]);
-  const xRight = useTransform(smoothProgress, [0, 1], ["200%", "0%"]);
-  const opacity = useTransform(smoothProgress, [1, .5], [0, 1]);
+  const xLeft = useTransform(smoothProgress, [1, 0.5], ["20%", "0%"]);
+  const xRight = useTransform(smoothProgress, [1, 0.5], ["-20%", "0%"]);
+  const opacity = useTransform(smoothProgress, [1, 0.5], [0, 1]);
 
   function splitText(text: string) {
     return text.split("").map((char, i) => (
@@ -60,65 +51,133 @@ export default function App() {
 
   return (
     <>
-      {loading && <Loader onComplete={handleComplete} />}
-      <Header />
-      <section>
-        <div className="relative">
-          <div className="container grid grid-cols-3 z-20 relative">
-            <div className="self-end space-y-4">
-              <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Deserunt, numquam sed eos quibusdam fugit nostrum cupiditate,
-                voluptas nemo ratione necessitatibus dignissimos vitae earum
-                atque rem quia iure placeat veritatis consectetur!
-              </p>
-              <Button>Look at</Button>
+      <div className="bg-[url('https://etherscan.io/images/svg/waves-light.svg')]">
+        <Header />
+        <section>
+          <div className="relative overflow-hidden">
+            <div className="container grid grid-cols-3 z-20 relative">
+              <div className="self-end space-y-4">
+                <p>
+                  Full-stack developer specializing in Web2 and Web3
+                  applications, crafting modern, high-performance digital
+                  experiences with clean architecture and seamless UX — bridging
+                  the gap between traditional and decentralized web ecosystems.
+                </p>
+              </div>
+              <div className="relative">
+                <img src="/img/foto.png" className="w-full" alt="" />
+                <div className="absolute bottom-0 left-0 right-0 h-[200px] bg-linear-to-t from-dark from-45% to-dark/0" />
+              </div>
+              {/* <div className="self-end space-y-4">
+              <ul className="flex gap-4">
+                <li>
+                  <a href="#" target="_blank">
+                    <RiInstagramFill size={30} />
+                  </a>
+                </li>
+                <li>
+                  <a href="#" target="_blank">
+                    <RiFacebookFill size={30} />
+                  </a>
+                </li>
+                <li>
+                  <a href="#" target="_blank">
+                    <RiLinkedinBoxFill size={30} />
+                  </a>
+                </li>
+              </ul>
+            </div> */}
+              <div className="self-end text-end">
+                <h2 className="text-xl underline underline-offset-6">
+                  Scroll Down
+                </h2>
+              </div>
             </div>
-            <div className="relative">
-              <img src="/img/foto.png" className="w-full" alt="" />
-              <div className="absolute bottom-0 left-0 right-0 h-[400px] bg-linear-to-t from-dark from-15% to-dark/0" />
-            </div>
-            <div className="self-end space-y-4">
-              <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Deserunt, numquam sed eos quibusdam fugit nostrum cupiditate,
-                voluptas nemo ratione necessitatibus dignissimos vitae earum
-                atque rem quia iure placeat veritatis consectetur!
-              </p>
+            <div className="absolute top-0 bottom-0 left-0 right-0 flex justify-center items-center z-10">
+              <div className="container space-y-2 px-40">
+                <h2 className="text-xl font-super text-left">
+                  Software Engineer
+                </h2>
+                <div ref={sectionRef} className="space-y-2">
+                  <div>
+                    <motion.h1
+                      className="text-8xl font-semibold text-start"
+                      style={{ x: xLeft, opacity }}
+                    >
+                      Agung
+                    </motion.h1>
+                  </div>
+                  <motion.h1
+                    className="text-8xl font-semibold text-right"
+                    style={{ x: xRight, opacity }}
+                  >
+                    Senjaya
+                  </motion.h1>
+                </div>
+              </div>
             </div>
           </div>
-          <div className="absolute top-0 bottom-0 left-0 right-0 flex justify-center items-center z-10">
-            {/* <div ref={splitRef} className="space-y-2 container">
-              <h2 className="text-xl">Since 2017</h2>
-              <h1 className="text-8xl font-semibold text-start">
-                {splitText("Software")}
-              </h1>
-              <h1 className="text-8xl font-semibold text-end">
-                {splitText("Engineer")}
-              </h1>
-            </div> */}
-            <div className="mx-auto max-w-8xl">
-              <div ref={sectionRef} className="space-y-2">
-                <motion.h1
-                  className="text-8xl font-semibold text-start"
-                  style={{ x: xLeft, opacity }}
-                >
-                  Software
-                </motion.h1>
-                <motion.h1
-                  className="text-8xl font-semibold text-right"
-                  style={{ x: xRight, opacity }}
-                >
-                  Engineer
-                </motion.h1>
-              </div>
+        </section>
+      </div>
+      <section className="py-20">
+        <div className="container space-y-4">
+          {/* <h2 className="text-2xl">Information</h2> */}
+          <div className="grid grid-cols-4 divide-x divide-dark-2">
+            <div className="py-8">
+              <p>Education</p>
+              <h4>Vocational High School</h4>
+            </div>
+            <div className="pl-10 py-8">
+              <p>Language</p>
+              <h4>Indonesia, English</h4>
+            </div>
+            <div className="pl-10 py-8">
+              <p>Born</p>
+              <h4>Sukabumi, 30 July 1995</h4>
+            </div>
+            <div className="pl-10 py-8">
+              <p>Living</p>
+              <h4 className="capialize">Sukabumi, Jawa Barat indonesia</h4>
             </div>
           </div>
         </div>
       </section>
       <section className="h-[80vh]">
-        <div className="container">
-          <h1>Porfolio</h1>
+        <div className="container space-y-8">
+          <div className="flex justify-between">
+            <div className="max-w-md">
+              <h1 className="text-5xl font-semibold capitalize">
+                Latest project portfolio
+              </h1>
+            </div>
+            <div className="max-w-2xl">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
+                atque earum pariatur maiores error sapiente quaerat repudiandae
+                at sed expedita doloribus necessitatibus quisquam fuga, neque
+                odit nam numquam. Dolorem, aspernatur?
+              </p>
+            </div>
+          </div>
+          <div className="grid grid-cols-4 gap-4">
+            <Card className="bg-dark-2">
+              <div>
+                <div className="h-[300px] bg-dark m-2 rounded-xl" />
+              </div>
+              <CardContent className="pb-2">
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Dolorem error mollitia laudantium incidunt sapiente doloribus
+                  magni! Magni sed illum ipsa necessitatibus minus saepe ab
+                  delectus qui? Enim eligendi quidem eaque!
+                </p>
+              </CardContent>
+              {/* <CardFooter className="flex justify-between">
+                <button>Cancel</button>
+                <button>Deploy</button>
+              </CardFooter> */}
+            </Card>
+          </div>
         </div>
       </section>
     </>
