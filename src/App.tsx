@@ -251,31 +251,30 @@ export default function App() {
               </p>
             </div>
           </div>
-          <div className="grid grid-cols-4 gap-4">
-            <Card className="bg-dark-2">
-              <div>
-                <div className="h-[300px] bg-dark m-2 rounded-xl" />
-              </div>
-              <CardContent className="pb-2">
-                <h2 className="font-semibold text-xl">San Central Indah</h2>
-                <ul className="flex gap-2">
-                  <li>
-                    <Badge>Vite</Badge>
-                  </li>
-                </ul>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Dolorem error mollitia laudantium incidunt sapiente doloribus
-                  magni! Magni sed illum ipsa necessitatibus minus saepe ab
-                  delectus qui? Enim eligendi quidem eaque!
-                </p>
-              </CardContent>
-              <CardFooter className="flex justify-between">
-                <Button size="sm" type="button">
-                  Live Preview
-                </Button>
-              </CardFooter>
-            </Card>
+          <div className="grid grid-cols-3 gap-4">
+            {portfolio.map((item,index) => (
+              <Card className="bg-dark-2" key={index}>
+                <div>
+                  <div className="h-[300px] bg-dark m-2 rounded-xl" />
+                </div>
+                <CardContent className="pb-2">
+                  <h2 className="font-semibold text-xl">{item.title}</h2>
+                  <ul className="flex gap-2">
+                    <li>
+                      <Badge>Vite</Badge>
+                    </li>
+                  </ul>
+                  <p>
+                    {item.desc ?? '-'}
+                  </p>
+                </CardContent>
+                <CardFooter className="flex justify-between">
+                  <Button size="sm" type="button">
+                    Live Preview
+                  </Button>
+                </CardFooter>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
