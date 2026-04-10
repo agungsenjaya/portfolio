@@ -19,6 +19,110 @@ import {
 } from "@/components/tailgrids/core/card";
 import { Badge } from "./components/tailgrids/core/badge";
 
+const skills = [
+  { title: "vue", img: null, link: null },
+  { title: "nuxt", img: null, link: null },
+  { title: "react", img: null, link: null },
+  { title: "next js", img: null, link: null },
+  { title: "react native", img: null, link: null },
+  { title: "next js", img: null, link: null },
+  { title: "vite", img: null, link: null },
+  { title: "electron js", img: null, link: null },
+  { title: "mysql", img: null, link: null },
+  { title: "postgress", img: null, link: null },
+  { title: "mongodb", img: null, link: null },
+  { title: "hono js", img: null, link: null },
+  { title: "node js", img: null, link: null },
+  { title: "docker", img: null, link: null },
+  { title: "git", img: null, link: null },
+  { title: "ionic", img: null, link: null },
+  { title: "golang", img: null, link: null },
+  { title: "python", img: null, link: null },
+  { title: "fluter", img: null, link: null },
+  { title: "wagmi", img: null, link: null },
+  { title: "web3", img: null, link: null },
+  { title: "tailwind", img: null, link: null },
+];
+
+const type = ["website", "mobile"];
+
+const category = ["web2", "web3"];
+
+const portfolio = [
+  {
+    title: "san central indah",
+    desc: null,
+    type: [1, 2],
+    category: [1],
+    img: null,
+    link: null,
+  },
+  {
+    title: "adglow pictures",
+    desc: null,
+    type: [1],
+    category: [1],
+    img: null,
+    link: null,
+  },
+  {
+    title: "seven jaya sentosa",
+    desc: null,
+    type: [1, 2],
+    category: [1],
+    img: null,
+    link: null,
+  },
+  {
+    title: "jiwanta thermal springs",
+    desc: null,
+    type: [1],
+    category: [1],
+    img: null,
+    link: null,
+  },
+  {
+    title: "central bangun mandiri",
+    desc: null,
+    type: [1],
+    category: [1],
+    img: null,
+    link: null,
+  },
+  {
+    title: "kopi kamana",
+    desc: null,
+    type: [1, 2],
+    category: [1],
+    img: null,
+    link: null,
+  },
+  {
+    title: "zkforge",
+    desc: null,
+    type: [1],
+    category: [2],
+    img: null,
+    link: null,
+  },
+  {
+    title: "zenix launcher",
+    desc: null,
+    type: [1],
+    category: [2],
+    img: null,
+    link: null,
+  },
+  {
+    title: "entry point",
+    desc: null,
+    type: [1],
+    category: [2],
+    img: null,
+    link: null,
+  },
+];
+
 export default function App() {
   const splitRef = useRef<HTMLDivElement>(null);
 
@@ -166,10 +270,11 @@ export default function App() {
                   delectus qui? Enim eligendi quidem eaque!
                 </p>
               </CardContent>
-              {/* <CardFooter className="flex justify-between">
-                <button>Cancel</button>
-                <button>Deploy</button>
-              </CardFooter> */}
+              <CardFooter className="flex justify-between">
+                <Button size="sm" type="button">
+                  Live Preview
+                </Button>
+              </CardFooter>
             </Card>
           </div>
         </div>
