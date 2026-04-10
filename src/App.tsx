@@ -51,12 +51,12 @@ export default function App() {
 
   return (
     <>
-      <div className="bg-[url('https://etherscan.io/images/svg/waves-light.svg')]">
+      <div className="bg-[url('https://etherscan.io/images/svg/waves-light.svg')] border-b border-dark-2">
         <Header />
         <section>
           <div className="relative overflow-hidden">
             <div className="container grid grid-cols-3 z-20 relative">
-              <div className="self-end space-y-4">
+              <div className="self-end mb-10 space-y-4">
                 <p>
                   Full-stack developer specializing in Web2 and Web3
                   applications, crafting modern, high-performance digital
@@ -68,26 +68,8 @@ export default function App() {
                 <img src="/img/foto.png" className="w-full" alt="" />
                 <div className="absolute bottom-0 left-0 right-0 h-[200px] bg-linear-to-t from-dark from-45% to-dark/0" />
               </div>
-              {/* <div className="self-end space-y-4">
-              <ul className="flex gap-4">
-                <li>
-                  <a href="#" target="_blank">
-                    <RiInstagramFill size={30} />
-                  </a>
-                </li>
-                <li>
-                  <a href="#" target="_blank">
-                    <RiFacebookFill size={30} />
-                  </a>
-                </li>
-                <li>
-                  <a href="#" target="_blank">
-                    <RiLinkedinBoxFill size={30} />
-                  </a>
-                </li>
-              </ul>
-            </div> */}
-              <div className="self-end text-end">
+              
+              <div className="self-end mb-10 text-end">
                 <h2 className="text-xl underline underline-offset-6">
                   Scroll Down
                 </h2>
@@ -147,7 +129,7 @@ export default function App() {
           <div className="flex justify-between">
             <div className="max-w-md">
               <h1 className="text-5xl font-semibold capitalize">
-                Latest project portfolio
+                Latest project showcase
               </h1>
             </div>
             <div className="max-w-2xl">
@@ -165,6 +147,7 @@ export default function App() {
                 <div className="h-[300px] bg-dark m-2 rounded-xl" />
               </div>
               <CardContent className="pb-2">
+                <h2 className="font-semibold text-xl">San Central Indah</h2>
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Dolorem error mollitia laudantium incidunt sapiente doloribus
