@@ -17,6 +17,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/tailgrids/core/card";
+import { Badge } from "./components/tailgrids/core/badge";
 
 export default function App() {
   const splitRef = useRef<HTMLDivElement>(null);
@@ -33,9 +34,14 @@ export default function App() {
     restDelta: 0.001,
   });
 
-  const xLeft = useTransform(smoothProgress, [1, 0.5], ["20%", "0%"]);
-  const xRight = useTransform(smoothProgress, [1, 0.5], ["-20%", "0%"]);
+  const xLeft = useTransform(smoothProgress, [1, 0.5], ["10%", "0%"]);
+  const xRight = useTransform(smoothProgress, [1, 0.5], ["-10%", "0%"]);
   const opacity = useTransform(smoothProgress, [1, 0.5], [0, 1]);
+  const blur = useTransform(
+    smoothProgress,
+    [1, 0.5],
+    ["blur(10px)", "blur(0px)"],
+  );
 
   function splitText(text: string) {
     return text.split("").map((char, i) => (
@@ -68,7 +74,7 @@ export default function App() {
                 <img src="/img/foto.png" className="w-full" alt="" />
                 <div className="absolute bottom-0 left-0 right-0 h-[200px] bg-linear-to-t from-dark from-45% to-dark/0" />
               </div>
-              
+
               <div className="self-end mb-10 text-end">
                 <h2 className="text-xl underline underline-offset-6">
                   Scroll Down
@@ -84,14 +90,14 @@ export default function App() {
                   <div>
                     <motion.h1
                       className="text-8xl font-semibold text-start"
-                      style={{ x: xLeft, opacity }}
+                      style={{ x: xLeft, opacity, filter: blur }}
                     >
                       Agung
                     </motion.h1>
                   </div>
                   <motion.h1
                     className="text-8xl font-semibold text-right"
-                    style={{ x: xRight, opacity }}
+                    style={{ x: xRight, opacity, filter: blur }}
                   >
                     Senjaya
                   </motion.h1>
@@ -148,6 +154,11 @@ export default function App() {
               </div>
               <CardContent className="pb-2">
                 <h2 className="font-semibold text-xl">San Central Indah</h2>
+                <ul className="flex gap-2">
+                  <li>
+                    <Badge>Vite</Badge>
+                  </li>
+                </ul>
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Dolorem error mollitia laudantium incidunt sapiente doloribus

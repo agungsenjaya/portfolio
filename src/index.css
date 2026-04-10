@@ -1,6 +1,115 @@
 @import "tailwindcss";
 @plugin "../node_modules/tailgrids/plugin.js";
 
+@theme {
+    --color-white-100: #ffffff;
+
+    --color-title-50: #f1f5f9;
+    --color-title-100: #cbd5e1;
+    --color-title-200: #94a3b8;
+
+    --color-text-50: #f8fafc;
+    --color-text-100: #cbd5e1;
+    --color-text-200: #94a3b8;
+
+    --color-base-50: #1e293b;
+    --color-base-100: #334155;
+    --color-base-200: #475569;
+    --color-base-300: #64748b;
+
+    --color-background-50: #0f172a;
+    --color-background-100: #1e293b;
+    --color-background-soft-50: #1e293b;
+
+    --color-card-background-50: #1e293b;
+
+    --color-input-background: #1e293b;
+    --color-input-placeholder-text: #64748b;
+    --color-input-disabled-text: #475569;
+    --color-input-primary-focus-border: #3b82f6;
+    --color-input-error-focus-border: #ef4444;
+    --color-input-success-focus-border: #22c55e;
+
+    --color-button-disabled-background: #334155;
+    --color-button-disabled-text: #64748b;
+    --color-button-primary-background: #3b82f6;
+    --color-button-primary-hover-background: #2563eb;
+    --color-button-primary-text: #ffffff;
+    --color-button-primary-focus-ring: #3b82f640;
+    --color-button-outline-background: #1e293b;
+    --color-button-outline-border: #475569;
+    --color-button-outline-text: #e2e8f0;
+    --color-button-outline-hover-background: #334155;
+    --color-button-outline-hover-text: #ffffff;
+    --color-button-outline-focus-ring: #3b82f640;
+    --color-button-outline-disabled-background: #1e293b;
+    --color-button-outline-disabled-border: #334155;
+    --color-button-outline-disabled-text: #475569;
+    --color-button-error-background: #ef4444;
+    --color-button-error-hover-background: #dc2626;
+    --color-button-error-text: #ffffff;
+    --color-button-error-focus-ring: #ef444440;
+    --color-button-error-outline-background: #1e293b;
+    --color-button-error-outline-border: #7f1d1d;
+    --color-button-error-outline-text: #fca5a5;
+    --color-button-error-outline-hover-background: #450a0a;
+    --color-button-error-outline-hover-text: #fecaca;
+    --color-button-error-outline-focus-ring: #ef444440;
+    --color-button-success-background: #22c55e;
+    --color-button-success-hover-background: #16a34a;
+    --color-button-success-text: #ffffff;
+    --color-button-success-focus-ring: #22c55e40;
+    --color-button-success-outline-background: #1e293b;
+    --color-button-success-outline-border: #166534;
+    --color-button-success-outline-text: #86efac;
+    --color-button-success-outline-hover-background: #052e16;
+    --color-button-success-outline-hover-text: #bbf7d0;
+    --color-button-success-outline-focus-ring: #22c55e40;
+    --color-button-ghost-text: #cbd5e1;
+    --color-button-ghost-hover-background: #334155;
+    --color-button-ghost-hover-text: #ffffff;
+
+    --color-badge-neutral-background: #334155;
+    --color-badge-neutral-text: #94a3b8;
+    --color-badge-neutral-icon-color: #64748b;
+    --color-badge-primary-background: #1e3a5f;
+    --color-badge-primary-text: #93c5fd;
+    --color-badge-primary-icon-color: #60a5fa;
+    --color-badge-error-background: #450a0a;
+    --color-badge-error-text: #fca5a5;
+    --color-badge-error-icon-color: #ef4444;
+    --color-badge-warning-background: #451a03;
+    --color-badge-warning-text: #fcd34d;
+    --color-badge-warning-icon-color: #f59e0b;
+    --color-badge-success-background: #052e16;
+    --color-badge-success-text: #86efac;
+    --color-badge-success-icon-color: #22c55e;
+    --color-badge-cyan-background: #083344;
+    --color-badge-cyan-text: #67e8f9;
+    --color-badge-cyan-icon-color: #06b6d4;
+    --color-badge-sky-background: #0c4a6e;
+    --color-badge-sky-text: #7dd3fc;
+    --color-badge-sky-icon-color: #0ea5e9;
+    --color-badge-blue-background: #1e3a5f;
+    --color-badge-blue-text: #93c5fd;
+    --color-badge-blue-icon-color: #3b82f6;
+    --color-badge-violet-background: #2e1065;
+    --color-badge-violet-text: #c4b5fd;
+    --color-badge-violet-icon-color: #8b5cf6;
+    --color-badge-purple-background: #3b0764;
+    --color-badge-purple-text: #d8b4fe;
+    --color-badge-purple-icon-color: #a855f7;
+    --color-badge-pink-background: #500724;
+    --color-badge-pink-text: #f9a8d4;
+    --color-badge-pink-icon-color: #ec4899;
+    --color-badge-rose-background: #4c0519;
+    --color-badge-rose-text: #fda4af;
+    --color-badge-rose-icon-color: #f43f5e;
+    --color-badge-orange-background: #431407;
+    --color-badge-orange-text: #fdba74;
+    --color-badge-orange-icon-color: #f97316;
+}
+
 @font-face {
     font-family: "Gt Super";
     src: url("/fonts/gt-super-400-normal.woff") format("woff2");
