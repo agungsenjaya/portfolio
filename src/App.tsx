@@ -1,8 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Header from "./components/header";
 import { Button } from "./components/tailgrids/core/button";
 import gsap from "gsap";
-import { motion, useScroll, useTransform, useSpring } from "motion/react";
+import { motion, useScroll, useTransform, useSpring, useInView } from "motion/react";
 import {
   RiFacebookFill,
   RiInstagramFill,
@@ -125,8 +125,18 @@ const portfolio = [
 
 export default function App() {
   const splitRef = useRef<HTMLDivElement>(null);
+  const [initialDone, setInitialDone] = useState(false);
 
   const sectionRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(sectionRef, { once: false });
+  const hasAnimated = useRef(false);
+
+  if (isInView && !hasAnimated.current) {
+    hasAnimated.current = true;
+  }
+
+  const showInitial = isInView || hasAnimated.current;
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
@@ -140,8 +150,8 @@ export default function App() {
 
   const xLeft = useTransform(smoothProgress, [1, 0.5], ["10%", "0%"]);
   const xRight = useTransform(smoothProgress, [1, 0.5], ["-10%", "0%"]);
-  const opacity = useTransform(smoothProgress, [1, 0.5], [0, 1]);
-  const blur = useTransform(
+  const scrollOpacity = useTransform(smoothProgress, [1, 0.5], [0, 1]);
+  const scrollBlur = useTransform(
     smoothProgress,
     [1, 0.5],
     ["blur(10px)", "blur(0px)"],
@@ -194,14 +204,41 @@ export default function App() {
                   <div>
                     <motion.h1
                       className="text-8xl font-semibold text-start"
-                      style={{ x: xLeft, opacity, filter: blur }}
+                      initial={{ opacity: 0, x: "10%", filter: "blur(10px)" }}
+                      animate={
+                        !initialDone
+                          ? showInitial
+                            ? { opacity: 1, x: "0%", filter: "blur(0px)" }
+                            : { opacity: 0, x: "10%", filter: "blur(10px)" }
+                          : undefined
+                      }
+                      style={
+                        initialDone
+                          ? { x: xLeft, opacity: scrollOpacity, filter: scrollBlur }
+                          : undefined
+                      }
+                      transition={{ duration: 0.8, ease: "easeOut" }}
+                      onAnimationComplete={() => setInitialDone(true)}
                     >
                       Agung
                     </motion.h1>
                   </div>
                   <motion.h1
                     className="text-8xl font-semibold text-right"
-                    style={{ x: xRight, opacity, filter: blur }}
+                    initial={{ opacity: 0, x: "-10%", filter: "blur(10px)" }}
+                    animate={
+                      !initialDone
+                        ? showInitial
+                          ? { opacity: 1, x: "0%", filter: "blur(0px)" }
+                          : { opacity: 0, x: "-10%", filter: "blur(10px)" }
+                        : undefined
+                    }
+                    style={
+                      initialDone
+                        ? { x: xRight, opacity: scrollOpacity, filter: scrollBlur }
+                        : undefined
+                    }
+                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
                   >
                     Senjaya
                   </motion.h1>
