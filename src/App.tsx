@@ -30,31 +30,31 @@ import {
 } from "./components/tailgrids/core/scroll-area";
 
 const tech = [
-  { title: "vue", img: "https://dummyimage.com/600x300" },
-  { title: "nuxt", img: "https://dummyimage.com/600x300" },
-  { title: "react", img: "https://dummyimage.com/600x300" },
-  { title: "redis", img: "https://dummyimage.com/600x300" },
-  { title: "react native", img: "https://dummyimage.com/600x300" },
-  { title: "next js", img: "https://dummyimage.com/600x300" },
-  { title: "vite", img: "https://dummyimage.com/600x300" },
-  { title: "electron js", img: "https://dummyimage.com/600x300" },
-  { title: "mysql", img: "https://dummyimage.com/600x300" },
-  { title: "postgress", img: "https://dummyimage.com/600x300" },
-  { title: "mongodb", img: "https://dummyimage.com/600x300" },
-  { title: "hono js", img: "https://dummyimage.com/600x300" },
-  { title: "node js", img: "https://dummyimage.com/600x300" },
-  { title: "docker", img: "https://dummyimage.com/600x300" },
-  { title: "git", img: "https://dummyimage.com/600x300" },
-  { title: "ionic", img: "https://dummyimage.com/600x300" },
-  { title: "golang", img: "https://dummyimage.com/600x300" },
-  { title: "python", img: "https://dummyimage.com/600x300" },
-  { title: "fluter", img: "https://dummyimage.com/600x300" },
-  { title: "wagmi", img: "https://dummyimage.com/600x300" },
-  { title: "web3", img: "https://dummyimage.com/600x300" },
-  { title: "tailwind", img: "https://dummyimage.com/600x300" },
-  { title: "bootstrap", img: "https://dummyimage.com/600x300" },
-  { title: "jquery", img: "https://dummyimage.com/600x300" },
-  { title: "laravel", img: "https://dummyimage.com/600x300" },
+  { title: "vue", img: "/img/tech_1.svg" },
+  { title: "nuxt", img: "/img/tech_2.svg" },
+  { title: "react", img: "/img/tech_3.svg" },
+  { title: "redis", img: "/img/tech_4.svg" },
+  { title: "react native", img: "/img/tech_5.svg" },
+  { title: "next js", img: "/img/tech_6.svg" },
+  { title: "vite", img: "/img/tech_7.svg" },
+  { title: "electron js", img: "/img/tech_8.svg" },
+  { title: "mysql", img: "/img/tech_9.svg" },
+  { title: "postgress", img: "/img/tech_10.svg" },
+  { title: "mongodb", img: "/img/tech_11.svg" },
+  { title: "hono js", img: "/img/tech_12.svg" },
+  { title: "node js", img: "/img/tech_13.svg" },
+  { title: "docker", img: "/img/tech_14.svg" },
+  { title: "git", img: "/img/tech_15.svg" },
+  { title: "ionic", img: "/img/tech_16.svg" },
+  { title: "golang", img: "/img/tech_17.svg" },
+  { title: "python", img: "/img/tech_18.svg" },
+  { title: "flutter", img: "/img/tech_19.svg" },
+  { title: "wagmi", img: "/img/tech_20.svg" },
+  { title: "web3", img: "/img/tech_20.svg" },
+  { title: "tailwind", img: "/img/tech_22.svg" },
+  { title: "bootstrap", img: "/img/tech_23.svg" },
+  { title: "jquery", img: "/img/tech_24.svg" },
+  { title: "laravel", img: "/img/tech_25.svg" },
 ];
 
 const type = ["website", "mobile"];
@@ -312,10 +312,18 @@ export default function App() {
                 maintenance
               </p>
               <div className="flex justify-start gap-4">
-                <Button type="button" iconOnly onClick={() => swiperRef.current?.slidePrev()}>
+                <Button
+                  type="button"
+                  iconOnly
+                  onClick={() => swiperRef.current?.slidePrev()}
+                >
                   <RiArrowLeftLine />
                 </Button>
-                <Button type="button" iconOnly onClick={() => swiperRef.current?.slideNext()}>
+                <Button
+                  type="button"
+                  iconOnly
+                  onClick={() => swiperRef.current?.slideNext()}
+                >
                   <RiArrowRightLine />
                 </Button>
               </div>
@@ -324,14 +332,16 @@ export default function App() {
           <Swiper
             spaceBetween={24}
             slidesPerView={1}
-            onSwiper={(swiper) => { swiperRef.current = swiper; }}
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper;
+            }}
             breakpoints={{
               768: { slidesPerView: 3 },
             }}
           >
             {portfolio.map((item, index) => (
               <SwiperSlide key={index}>
-                <Card className="bg-dark border border-dark-2 p-4">
+                <Card className="bg-dark bg-[url('https://etherscan.io/images/svg/waves-light.svg')] border border-dark-2 p-4">
                   {item.img && (
                     <div className="p-2 rounded-xl grayscale hover:grayscale-0 opacity-30 hover:opacity-100">
                       <div className="relative">
@@ -434,7 +444,13 @@ export default function App() {
                   [&:nth-child(5n+1)]:border-l-0
                   [&:nth-child(n+${Math.floor((tech.length - 1) / 5) * 5 + 1})]:border-b-0`}
               >
-                <img src={item.img} className="opacity-0" alt="" />
+                <div className="flex justify-center items-center text-center p-4">
+                  <img
+                    src={item.img}
+                    className={`invert w-[150px] ${item.img == "/img/tech_21.svg" && "opacity-0"}`}
+                    alt=""
+                  />
+                </div>
               </div>
             ))}
           </div>
