@@ -428,11 +428,10 @@ export default function App() {
             <h1 className="text-5xl font-semibold capitalize">
               Architect skill
             </h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque
-              consequatur commodi, tempore nam suscipit a ab id nisi fuga illum
-              nemo maiores aliquid ad magni quibusdam laboriosam repudiandae cum
-              placeat!
+            <p className="max-w-3xl">
+              A curated collection of technologies and frameworks I work with
+              across full-stack development from frontend and mobile to backend,
+              database, devops, and blockchain.
             </p>
           </div>
           <div className="grid grid-cols-5">
