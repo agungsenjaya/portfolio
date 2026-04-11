@@ -1,4 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 import Header from "./components/header";
 import { Button } from "./components/tailgrids/core/button";
 import gsap from "gsap";
@@ -307,87 +309,93 @@ export default function App() {
               </p>
             </div>
           </div>
-          <div className="grid grid-cols-3 gap-6">
+          <Swiper
+            spaceBetween={24}
+            slidesPerView={1}
+            breakpoints={{
+              768: { slidesPerView: 3 },
+            }}
+          >
             {portfolio.map((item, index) => (
-              <Card className="bg-dark border border-dark-2 p-4" key={index}>
-                {item.img && (
-                  <div className="p-2 rounded-xl grayscale hover:grayscale-0 opacity-30 hover:opacity-100">
-                    <div className="relative">
-                      <img src={item.img} alt="" />
-                      <div className="absolute top-0 bottom-0 left-0 right-0">
-                        <div className="h-full flex justify-center">
-                          <div className="h-full border-x border-dark-2 w-[100px]"></div>
+              <SwiperSlide key={index}>
+                <Card className="bg-dark border border-dark-2 p-4">
+                  {item.img && (
+                    <div className="p-2 rounded-xl grayscale hover:grayscale-0 opacity-30 hover:opacity-100">
+                      <div className="relative">
+                        <img src={item.img} alt="" />
+                        <div className="absolute top-0 bottom-0 left-0 right-0">
+                          <div className="h-full flex justify-center">
+                            <div className="h-full border-x border-dark-2 w-[100px]"></div>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                )}
-                <CardContent className="pb-2 space-y-4">
-                  <h2 className="font-semibold text-xl capitalize">
-                    {item.title}
-                  </h2>
-
-                  <div className="flex justify-between">
-                    <div>
-                      <h4>Platform :</h4>
-                      <ul className="p-2 flex gap-2">
-                        {item.type.map((item, index) => (
-                          <li key={index}>
-                            <Badge className="badge">{type[item - 1]}</Badge>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div>
-                      <h4>Type :</h4>
-                      <ul className="p-2 flex gap-2">
-                        {item.category.map((item, index) => (
-                          <li key={index}>
-                            <Badge className="badge">
-                              {category[item - 1]}
-                            </Badge>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                  <p>{item.desc.slice(0, 150) ?? "-"}..</p>
-                  {item.tech && (
-                    <>
-                      <h4>Architect :</h4>
-                      <ScrollArea className="w-full">
-                        <ScrollAreaViewport>
-                          <ul className="flex gap-2 pb-2">
-                            {item.tech.map((item, index) => (
-                              <li key={index} className="shrink-0">
-                                <Badge className="badge">
-                                  {tech[item - 1].title}
-                                </Badge>
-                              </li>
-                            ))}
-                          </ul>
-                        </ScrollAreaViewport>
-                        <ScrollBar orientation="horizontal" />
-                      </ScrollArea>
-                    </>
                   )}
-                </CardContent>
-                {item.link && (
+                  <CardContent className="pb-2 space-y-4">
+                    <h2 className="font-semibold text-xl capitalize">
+                      {item.title}
+                    </h2>
+
+                    <div className="flex justify-between">
+                      <div>
+                        <h4>Platform :</h4>
+                        <ul className="p-2 flex gap-2">
+                          {item.type.map((item, index) => (
+                            <li key={index}>
+                              <Badge className="badge">{type[item - 1]}</Badge>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div>
+                        <h4>Type :</h4>
+                        <ul className="p-2 flex gap-2">
+                          {item.category.map((item, index) => (
+                            <li key={index}>
+                              <Badge className="badge">
+                                {category[item - 1]}
+                              </Badge>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                    <p>{item.desc.slice(0, 150) ?? "-"}..</p>
+                    {item.tech && (
+                      <>
+                        <h4>Architect :</h4>
+                        <ScrollArea className="w-full">
+                          <ScrollAreaViewport>
+                            <ul className="flex gap-2 pb-2">
+                              {item.tech.map((item, index) => (
+                                <li key={index} className="shrink-0">
+                                  <Badge className="badge">
+                                    {tech[item - 1].title}
+                                  </Badge>
+                                </li>
+                              ))}
+                            </ul>
+                          </ScrollAreaViewport>
+                          <ScrollBar orientation="horizontal" />
+                        </ScrollArea>
+                      </>
+                    )}
+                  </CardContent>
                   <CardFooter className="flex justify-between">
                     <Button
                       size="sm"
                       variant="primary"
                       type="button"
                       disabled={!item.link}
-                      className="w-full"
+                      className={`w-full ${item.link ? "opacity-100" : "opacity-0"}`}
                     >
                       {item.link ? "Visit Site" : "Private"}
                     </Button>
                   </CardFooter>
-                )}
-              </Card>
+                </Card>
+              </SwiperSlide>
             ))}
-          </div>
+          </Swiper>
         </div>
       </section>
       <section className="py-20">
