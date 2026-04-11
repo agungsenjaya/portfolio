@@ -3,7 +3,7 @@ import React from "react";
 export default function Header() {
   return (
     <header className="py-4">
-      <div className="container flex justify-between">
+      <div className="container mx-auto flex justify-between">
         <div className="flex gap-2 items-center">
           <div className="animate-spin [animation-duration:3000ms]">
             <img src="/img/icon.png" className="w-[18px]" alt="" />

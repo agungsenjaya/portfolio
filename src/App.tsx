@@ -200,7 +200,7 @@ export default function App() {
         <Header />
         <section>
           <div className="relative overflow-hidden">
-            <div className="container grid grid-cols-3 z-20 relative">
+            <div className="container mx-auto grid grid-cols-3 z-20 relative">
               <div className="self-end mb-10 space-y-4">
                 <p>
                   Full-stack developer specializing in Web2 and Web3
@@ -221,7 +221,7 @@ export default function App() {
               </div>
             </div>
             <div className="absolute top-0 bottom-0 left-0 right-0 flex justify-center items-center z-10">
-              <div className="container space-y-2 px-40">
+              <div className="container mx-auto space-y-2 px-40">
                 <h2 className="text-xl font-super text-left">
                   Software Engineer
                 </h2>
@@ -276,7 +276,7 @@ export default function App() {
         </section>
       </div>
       <section className="py-20">
-        <div className="container space-y-4">
+        <div className="container mx-auto space-y-4">
           {/* <h2 className="text-2xl">Information</h2> */}
           <div className="grid grid-cols-4 divide-x divide-dark-2">
             <div className="py-8">
@@ -299,7 +299,7 @@ export default function App() {
         </div>
       </section>
       <section className="py-20">
-        <div className="container space-y-8">
+        <div className="container mx-auto space-y-8">
           <div className="flex justify-between">
             <div className="max-w-md">
               <h1 className="text-5xl font-semibold capitalize">
@@ -308,9 +308,9 @@ export default function App() {
             </div>
             <div className="max-w-2xl space-y-2">
               <p>
-                Independent fullstack developer handling the entire product
-                lifecycle — from UI/UX design to development, deployment, and
-                maintenance
+                Trusted by clients to bring their ideas to life — from concept
+                to deployment, delivering products they're proud to call their
+                own.
               </p>
               <div className="flex justify-start gap-4">
                 <Button
@@ -423,7 +423,7 @@ export default function App() {
         </div>
       </section>
       <section className="py-20">
-        <div className="container space-y-8">
+        <div className="container mx-auto space-y-8">
           <div>
             <h1 className="text-5xl font-semibold capitalize">
               Architect skill
@@ -454,7 +454,10 @@ export default function App() {
             Save my resume for call me in the future
           </h4>
           <div>
-            <Button type="button" className="!bg-dark !text-white w-[300px] flex items-center">
+            <Button
+              type="button"
+              className="!bg-dark !text-white w-[300px] flex items-center"
+            >
               <RiFilePdf2Line />
               Download Resume
             </Button>
@@ -462,7 +465,7 @@ export default function App() {
         </div>
       </section>
       <section className="py-20 bg-[url('https://etherscan.io/images/svg/waves-light.svg')]">
-        <div className="container space-y-8">
+        <div className="container mx-auto space-y-8">
           <div>
             <h4 className="text-2xl max-w-lg">
               Contact me if you are interested for partners or build anything
