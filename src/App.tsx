@@ -311,13 +311,14 @@ export default function App() {
             {portfolio.map((item, index) => (
               <Card className="bg-dark border border-dark-2 p-4" key={index}>
                 {item.img && (
-                  <div className="p-2">
+                  <div className="p-2 rounded-xl grayscale hover:grayscale-0 opacity-30 hover:opacity-100">
                     <div className="relative">
-                      <img
-                        src={item.img}
-                        className="rounded-xl grayscale hover:grayscale-0 opacity-50 hover:opacity-100"
-                        alt=""
-                      />
+                      <img src={item.img} alt="" />
+                      <div className="absolute top-0 bottom-0 left-0 right-0">
+                        <div className="h-full flex justify-center">
+                          <div className="h-full border-x border-dark-2 w-[100px]"></div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 )}
@@ -332,7 +333,7 @@ export default function App() {
                       <ul className="p-2 flex gap-2">
                         {item.type.map((item, index) => (
                           <li key={index}>
-                            <Badge className="uppercase font-normal text-[10px] px-3 py-1">{type[item - 1]}</Badge>
+                            <Badge className="badge">{type[item - 1]}</Badge>
                           </li>
                         ))}
                       </ul>
@@ -342,7 +343,9 @@ export default function App() {
                       <ul className="p-2 flex gap-2">
                         {item.category.map((item, index) => (
                           <li key={index}>
-                            <Badge className="uppercase font-normal text-[10px] px-3 py-1">{category[item - 1]}</Badge>
+                            <Badge className="badge">
+                              {category[item - 1]}
+                            </Badge>
                           </li>
                         ))}
                       </ul>
@@ -357,7 +360,9 @@ export default function App() {
                           <ul className="flex gap-2 pb-2">
                             {item.tech.map((item, index) => (
                               <li key={index} className="shrink-0">
-                                <Badge className="uppercase font-normal text-[10px] px-3 py-1">{tech[item - 1].title}</Badge>
+                                <Badge className="badge">
+                                  {tech[item - 1].title}
+                                </Badge>
                               </li>
                             ))}
                           </ul>
@@ -367,19 +372,36 @@ export default function App() {
                     </>
                   )}
                 </CardContent>
-                <CardFooter className="flex justify-between">
-                  <Button
-                    size="sm"
-                    variant="primary"
-                    type="button"
-                    disabled={!item.link}
-                    className="font-normal w-full"
-                  >
-                    {item.link ? "Live Preview" : "Private"}
-                  </Button>
-                </CardFooter>
+                {item.link && (
+                  <CardFooter className="flex justify-between">
+                    <Button
+                      size="sm"
+                      variant="primary"
+                      type="button"
+                      disabled={!item.link}
+                      className="w-full"
+                    >
+                      {item.link ? "Visit Site" : "Private"}
+                    </Button>
+                  </CardFooter>
+                )}
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+      <section className="py-20">
+        <div className="container space-y-8">
+          <div>
+            <h1 className="text-5xl font-semibold capitalize">
+              Architect skill
+            </h1>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque
+              consequatur commodi, tempore nam suscipit a ab id nisi fuga illum
+              nemo maiores aliquid ad magni quibusdam laboriosam repudiandae cum
+              placeat!
+            </p>
           </div>
         </div>
       </section>
