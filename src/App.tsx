@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Header from "./components/header";
 import { Button } from "./components/tailgrids/core/button";
 import gsap from "gsap";
-import { motion, useScroll, useTransform, useSpring, useInView } from "motion/react";
+import { motion, useScroll, useTransform, useSpring } from "motion/react";
 import {
   RiFacebookFill,
   RiInstagramFill,
@@ -42,6 +42,7 @@ const skills = [
   { title: "wagmi", img: null, link: null },
   { title: "web3", img: null, link: null },
   { title: "tailwind", img: null, link: null },
+  { title: "bootstrap", img: null, link: null },
 ];
 
 const type = ["website", "mobile"];
@@ -51,7 +52,7 @@ const category = ["web2", "web3"];
 const portfolio = [
   {
     title: "san central indah",
-    desc: null,
+    desc: "Designed and developed a product website complete with brand color guidelines, alongside a mobile app built to streamline and empower the sales team in their daily selling activities.",
     type: [1, 2],
     category: [1],
     img: null,
@@ -59,7 +60,7 @@ const portfolio = [
   },
   {
     title: "adglow pictures",
-    desc: null,
+    desc: "Built a cinematic portfolio website to highlight and archive film productions, featuring release histories, synopses, and behind-the-scenes content for movies that have premiered in theaters.",
     type: [1],
     category: [1],
     img: null,
@@ -67,7 +68,7 @@ const portfolio = [
   },
   {
     title: "seven jaya sentosa",
-    desc: null,
+    desc: "Built a digital plastic product catalog website, enabling broader product promotion with a clean, accessible display of product variants, specifications, and categories for potential customers and business partners.",
     type: [1, 2],
     category: [1],
     img: null,
@@ -75,7 +76,7 @@ const portfolio = [
   },
   {
     title: "jiwanta thermal springs",
-    desc: null,
+    desc: "Designed and developed a website for a hot spring resort and hotel, complete with an integrated hotel booking system that allows guests to check availability, select rooms, and make reservations online with ease.",
     type: [1],
     category: [1],
     img: null,
@@ -83,7 +84,7 @@ const portfolio = [
   },
   {
     title: "central bangun mandiri",
-    desc: null,
+    desc: "Designed and developed a marketing website for a professional painting contractor, showcasing services, past projects, and contact information to attract more clients and expand business reach.",
     type: [1],
     category: [1],
     img: null,
@@ -91,7 +92,7 @@ const portfolio = [
   },
   {
     title: "kopi kamana",
-    desc: null,
+    desc: "Designed and developed a Point of Sale system across web and mobile platforms, featuring a cashier interface, sales transaction management, and financial reporting tools to support accounting needs.",
     type: [1, 2],
     category: [1],
     img: null,
@@ -99,7 +100,7 @@ const portfolio = [
   },
   {
     title: "zkforge",
-    desc: null,
+    desc: "Designed and developed a fundraising website on the Solana network, integrated with an autopilot token listing system on Pump.fun to streamline the token launch and fundraising process.",
     type: [1],
     category: [2],
     img: null,
@@ -107,7 +108,7 @@ const portfolio = [
   },
   {
     title: "zenix launcher",
-    desc: null,
+    desc: "Designed and developed a fundraising website for an upcoming crypto token launch, providing project information, tokenomics, roadmap, and a contribution mechanism to attract early investors.",
     type: [1],
     category: [2],
     img: null,
@@ -115,7 +116,7 @@ const portfolio = [
   },
   {
     title: "entry point",
-    desc: null,
+    desc: "Designed and developed a crypto token fundraising website built for the Base network, featuring project details, tokenomics, roadmap, and a presale contribution system integrated with Base compatible wallets.",
     type: [1],
     category: [2],
     img: null,
@@ -125,21 +126,20 @@ const portfolio = [
 
 export default function App() {
   const splitRef = useRef<HTMLDivElement>(null);
-  const [initialDone, setInitialDone] = useState(false);
+  const [showInitial, setShowInitial] = useState(false);
 
   const sectionRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(sectionRef, { once: false });
-  const hasAnimated = useRef(false);
 
-  if (isInView && !hasAnimated.current) {
-    hasAnimated.current = true;
-  }
-
-  const showInitial = isInView || hasAnimated.current;
+  // Trigger entrance animation on mount regardless of scroll position
+  useEffect(() => {
+    const timer = setTimeout(() => setShowInitial(true), 50);
+    return () => clearTimeout(timer);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start end", "end start"],
+    // progress 0 = hero at top of page (on load), progress 1 = fully scrolled out
+    offset: ["start start", "end start"],
   });
 
   const smoothProgress = useSpring(scrollYProgress, {
@@ -148,13 +148,15 @@ export default function App() {
     restDelta: 0.001,
   });
 
-  const xLeft = useTransform(smoothProgress, [1, 0.5], ["10%", "0%"]);
-  const xRight = useTransform(smoothProgress, [1, 0.5], ["-10%", "0%"]);
-  const scrollOpacity = useTransform(smoothProgress, [1, 0.5], [0, 1]);
+  // progress 0 (page load, no scroll) → fully visible, no effects
+  // progress 0→0.6 (scrolling hero out) → fades, blurs, slides away
+  const xRight = useTransform(smoothProgress, [0, 0.6], ["0%", "-10%"]);
+  const xLeft = useTransform(smoothProgress, [0, 0.6], ["0%", "10%"]);
+  const scrollOpacity = useTransform(smoothProgress, [0, 0.6], [1, 0]);
   const scrollBlur = useTransform(
     smoothProgress,
-    [1, 0.5],
-    ["blur(10px)", "blur(0px)"],
+    [0, 0.6],
+    ["blur(0px)", "blur(10px)"],
   );
 
   function splitText(text: string) {
@@ -200,48 +202,50 @@ export default function App() {
                 <h2 className="text-xl font-super text-left">
                   Software Engineer
                 </h2>
+                {/* sectionRef here so scroll tracks the hero section from top */}
                 <div ref={sectionRef} className="space-y-2">
-                  <div>
+                  {/* Scroll-out wrapper for "Agung" — separate from entrance animation */}
+                  <motion.div
+                    style={{
+                      x: xLeft,
+                      opacity: scrollOpacity,
+                      filter: scrollBlur,
+                    }}
+                  >
                     <motion.h1
                       className="text-8xl font-semibold text-start"
                       initial={{ opacity: 0, x: "10%", filter: "blur(10px)" }}
                       animate={
-                        !initialDone
-                          ? showInitial
-                            ? { opacity: 1, x: "0%", filter: "blur(0px)" }
-                            : { opacity: 0, x: "10%", filter: "blur(10px)" }
-                          : undefined
-                      }
-                      style={
-                        initialDone
-                          ? { x: xLeft, opacity: scrollOpacity, filter: scrollBlur }
-                          : undefined
+                        showInitial
+                          ? { opacity: 1, x: "0%", filter: "blur(0px)" }
+                          : { opacity: 0, x: "10%", filter: "blur(10px)" }
                       }
                       transition={{ duration: 0.8, ease: "easeOut" }}
-                      onAnimationComplete={() => setInitialDone(true)}
                     >
                       Agung
                     </motion.h1>
-                  </div>
-                  <motion.h1
-                    className="text-8xl font-semibold text-right"
-                    initial={{ opacity: 0, x: "-10%", filter: "blur(10px)" }}
-                    animate={
-                      !initialDone
-                        ? showInitial
+                  </motion.div>
+                  {/* Scroll-out wrapper for "Senjaya" */}
+                  <motion.div
+                    style={{
+                      x: xRight,
+                      opacity: scrollOpacity,
+                      filter: scrollBlur,
+                    }}
+                  >
+                    <motion.h1
+                      className="text-8xl font-semibold text-right"
+                      initial={{ opacity: 0, x: "-10%", filter: "blur(10px)" }}
+                      animate={
+                        showInitial
                           ? { opacity: 1, x: "0%", filter: "blur(0px)" }
                           : { opacity: 0, x: "-10%", filter: "blur(10px)" }
-                        : undefined
-                    }
-                    style={
-                      initialDone
-                        ? { x: xRight, opacity: scrollOpacity, filter: scrollBlur }
-                        : undefined
-                    }
-                    transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
-                  >
-                    Senjaya
-                  </motion.h1>
+                      }
+                      transition={{ duration: 0.8, ease: "easeOut" }}
+                    >
+                      Senjaya
+                    </motion.h1>
+                  </motion.div>
                 </div>
               </div>
             </div>
@@ -281,29 +285,28 @@ export default function App() {
             </div>
             <div className="max-w-2xl">
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
-                atque earum pariatur maiores error sapiente quaerat repudiandae
-                at sed expedita doloribus necessitatibus quisquam fuga, neque
-                odit nam numquam. Dolorem, aspernatur?
+                Independent fullstack developer handling the entire product
+                lifecycle — from UI/UX design to development, deployment, and
+                maintenance
               </p>
             </div>
           </div>
           <div className="grid grid-cols-3 gap-4">
-            {portfolio.map((item,index) => (
+            {portfolio.map((item, index) => (
               <Card className="bg-dark-2" key={index}>
                 <div>
                   <div className="h-[300px] bg-dark m-2 rounded-xl" />
                 </div>
                 <CardContent className="pb-2">
-                  <h2 className="font-semibold text-xl">{item.title}</h2>
+                  <h2 className="font-semibold text-xl capitalize">
+                    {item.title}
+                  </h2>
                   <ul className="flex gap-2">
                     <li>
                       <Badge>Vite</Badge>
                     </li>
                   </ul>
-                  <p>
-                    {item.desc ?? '-'}
-                  </p>
+                  <p>{item.desc ?? "-"}</p>
                 </CardContent>
                 <CardFooter className="flex justify-between">
                   <Button size="sm" type="button">
