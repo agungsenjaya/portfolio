@@ -403,9 +403,16 @@ export default function App() {
               placeat!
             </p>
           </div>
-          <div className="grid grid-cols-5 gap-4">
-            {tech.map((item,index) => (
-              <div key={index}>
+          <div className="grid grid-cols-5">
+            {tech.map((item, index) => (
+              <div
+                key={index}
+                className={`border-b border-r border-white/20 p-4
+                  [&:nth-child(5n)]:border-r-0
+                  [&:nth-child(-n+5)]:border-t-0
+                  [&:nth-child(5n+1)]:border-l-0
+                  [&:nth-child(n+${Math.floor((tech.length - 1) / 5) * 5 + 1})]:border-b-0`}
+              >
                 <img src={item.img} className="opacity-0" alt="" />
               </div>
             ))}
