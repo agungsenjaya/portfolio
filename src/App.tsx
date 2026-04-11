@@ -25,31 +25,31 @@ import {
 } from "./components/tailgrids/core/scroll-area";
 
 const tech = [
-  { title: "vue", img: null, link: null },
-  { title: "nuxt", img: null, link: null },
-  { title: "react", img: null, link: null },
-  { title: "redis", img: null, link: null },
-  { title: "react native", img: null, link: null },
-  { title: "next js", img: null, link: null },
-  { title: "vite", img: null, link: null },
-  { title: "electron js", img: null, link: null },
-  { title: "mysql", img: null, link: null },
-  { title: "postgress", img: null, link: null },
-  { title: "mongodb", img: null, link: null },
-  { title: "hono js", img: null, link: null },
-  { title: "node js", img: null, link: null },
-  { title: "docker", img: null, link: null },
-  { title: "git", img: null, link: null },
-  { title: "ionic", img: null, link: null },
-  { title: "golang", img: null, link: null },
-  { title: "python", img: null, link: null },
-  { title: "fluter", img: null, link: null },
-  { title: "wagmi", img: null, link: null },
-  { title: "web3", img: null, link: null },
-  { title: "tailwind", img: null, link: null },
-  { title: "bootstrap", img: null, link: null },
-  { title: "jquery", img: null, link: null },
-  { title: "laravel", img: null, link: null },
+  { title: "vue", img: "https://dummyimage.com/600x300" },
+  { title: "nuxt", img: "https://dummyimage.com/600x300" },
+  { title: "react", img: "https://dummyimage.com/600x300" },
+  { title: "redis", img: "https://dummyimage.com/600x300" },
+  { title: "react native", img: "https://dummyimage.com/600x300" },
+  { title: "next js", img: "https://dummyimage.com/600x300" },
+  { title: "vite", img: "https://dummyimage.com/600x300" },
+  { title: "electron js", img: "https://dummyimage.com/600x300" },
+  { title: "mysql", img: "https://dummyimage.com/600x300" },
+  { title: "postgress", img: "https://dummyimage.com/600x300" },
+  { title: "mongodb", img: "https://dummyimage.com/600x300" },
+  { title: "hono js", img: "https://dummyimage.com/600x300" },
+  { title: "node js", img: "https://dummyimage.com/600x300" },
+  { title: "docker", img: "https://dummyimage.com/600x300" },
+  { title: "git", img: "https://dummyimage.com/600x300" },
+  { title: "ionic", img: "https://dummyimage.com/600x300" },
+  { title: "golang", img: "https://dummyimage.com/600x300" },
+  { title: "python", img: "https://dummyimage.com/600x300" },
+  { title: "fluter", img: "https://dummyimage.com/600x300" },
+  { title: "wagmi", img: "https://dummyimage.com/600x300" },
+  { title: "web3", img: "https://dummyimage.com/600x300" },
+  { title: "tailwind", img: "https://dummyimage.com/600x300" },
+  { title: "bootstrap", img: "https://dummyimage.com/600x300" },
+  { title: "jquery", img: "https://dummyimage.com/600x300" },
+  { title: "laravel", img: "https://dummyimage.com/600x300" },
 ];
 
 const type = ["website", "mobile"];
@@ -402,6 +402,13 @@ export default function App() {
               nemo maiores aliquid ad magni quibusdam laboriosam repudiandae cum
               placeat!
             </p>
+          </div>
+          <div className="grid grid-cols-5 gap-4">
+            {tech.map((item,index) => (
+              <div key={index}>
+                <img src={item.img} className="opacity-0" alt="" />
+              </div>
+            ))}
           </div>
         </div>
       </section>
