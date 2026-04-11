@@ -1,11 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperType } from "swiper";
 import "swiper/css";
 import Header from "./components/header";
 import { Button } from "./components/tailgrids/core/button";
 import gsap from "gsap";
 import { motion, useScroll, useTransform, useSpring } from "motion/react";
 import {
+  RiArrowLeftLine,
+  RiArrowRightLine,
   RiFacebookFill,
   RiInstagramFill,
   RiLinkedinBoxFill,
@@ -144,6 +147,7 @@ const portfolio = [
 
 export default function App() {
   const splitRef = useRef<HTMLDivElement>(null);
+  const swiperRef = useRef<SwiperType | null>(null);
   const [showInitial, setShowInitial] = useState(false);
 
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -301,17 +305,26 @@ export default function App() {
                 Latest project showcase
               </h1>
             </div>
-            <div className="max-w-2xl">
+            <div className="max-w-2xl space-y-2">
               <p>
                 Independent fullstack developer handling the entire product
                 lifecycle — from UI/UX design to development, deployment, and
                 maintenance
               </p>
+              <div className="flex justify-start gap-4">
+                <Button type="button" iconOnly onClick={() => swiperRef.current?.slidePrev()}>
+                  <RiArrowLeftLine />
+                </Button>
+                <Button type="button" iconOnly onClick={() => swiperRef.current?.slideNext()}>
+                  <RiArrowRightLine />
+                </Button>
+              </div>
             </div>
           </div>
           <Swiper
             spaceBetween={24}
             slidesPerView={1}
+            onSwiper={(swiper) => { swiperRef.current = swiper; }}
             breakpoints={{
               768: { slidesPerView: 3 },
             }}
