@@ -10,6 +10,7 @@ import {
   RiArrowLeftLine,
   RiArrowRightLine,
   RiFacebookFill,
+  RiFilePdf2Line,
   RiInstagramFill,
   RiLinkedinBoxFill,
 } from "react-icons/ri";
@@ -50,7 +51,7 @@ const tech = [
   { title: "python", img: "/img/tech_18.svg" },
   { title: "flutter", img: "/img/tech_19.svg" },
   { title: "wagmi", img: "/img/tech_20.svg" },
-  { title: "web3", img: "/img/tech_20.svg" },
+  { title: "zustand", img: "/img/tech_21.svg" },
   { title: "tailwind", img: "/img/tech_22.svg" },
   { title: "bootstrap", img: "/img/tech_23.svg" },
   { title: "jquery", img: "/img/tech_24.svg" },
@@ -341,7 +342,7 @@ export default function App() {
           >
             {portfolio.map((item, index) => (
               <SwiperSlide key={index}>
-                <Card className="bg-dark bg-[url('https://etherscan.io/images/svg/waves-light.svg')] border border-dark-2 p-4">
+                <Card className="bg-dark border border-dark-2 p-4">
                   {item.img && (
                     <div className="p-2 rounded-xl grayscale hover:grayscale-0 opacity-30 hover:opacity-100">
                       <div className="relative">
@@ -441,14 +442,53 @@ export default function App() {
                 className="border-b border-r border-white/20 p-4 [&:nth-child(5n)]:border-r-0 [&:nth-child(-n+5)]:border-t-0 [&:nth-child(5n+1)]:border-l-0 [&:nth-child(n+21)]:border-b-0"
               >
                 <div className="flex justify-center items-center text-center p-4">
-                  <img
-                    src={item.img}
-                    className={`invert w-[150px] ${item.img == "/img/tech_21.svg" && "opacity-0"}`}
-                    alt=""
-                  />
+                  <img src={item.img} className={`invert w-[150px]`} alt="" />
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+      <section className="py-20 bg-white light">
+        <div className="mx-auto max-w-3xl flex justify-between items-center">
+          <h4 className="text-4xl font-super text-dark max-w-sm">
+            Save my resume for call me in the future
+          </h4>
+          <div>
+            <Button type="button" className="!bg-dark !text-white w-[300px] flex items-center">
+              <RiFilePdf2Line />
+              Download Resume
+            </Button>
+          </div>
+        </div>
+      </section>
+      <section className="py-20 bg-[url('https://etherscan.io/images/svg/waves-light.svg')]">
+        <div className="container space-y-8">
+          <div>
+            <h4 className="text-2xl max-w-lg">
+              Contact me if you are interested for partners or build anything
+              you want
+            </h4>
+          </div>
+          <ul className="space-y-8 divide-y divide-dark-4">
+            <li className="flex justify-between pb-8">
+              <p>Email address</p>
+              <h4>agungsenjaya813@gmail.com</h4>
+            </li>
+            <li className="flex justify-between pb-8">
+              <p>Whatsapp</p>
+              <h4>+62 857 - 5979 - 4605</h4>
+            </li>
+            <li className="flex justify-between pb-8">
+              <p>Telegram</p>
+              <h4>@Agungsenja</h4>
+            </li>
+          </ul>
+          <div className="flex justify-between">
+            <h4>© 2026 Agung Senjaya. All rights reserved</h4>
+            <div className="animate-spin [animation-duration:3000ms]">
+              <img src="/img/icon.png" className="w-[18px]" alt="" />
+            </div>
           </div>
         </div>
       </section>
