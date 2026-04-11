@@ -438,11 +438,7 @@ export default function App() {
             {tech.map((item, index) => (
               <div
                 key={index}
-                className={`border-b border-r border-white/20 p-4
-                  [&:nth-child(5n)]:border-r-0
-                  [&:nth-child(-n+5)]:border-t-0
-                  [&:nth-child(5n+1)]:border-l-0
-                  [&:nth-child(n+${Math.floor((tech.length - 1) / 5) * 5 + 1})]:border-b-0`}
+                className="border-b border-r border-white/20 p-4 [&:nth-child(5n)]:border-r-0 [&:nth-child(-n+5)]:border-t-0 [&:nth-child(5n+1)]:border-l-0 [&:nth-child(n+21)]:border-b-0"
               >
                 <div className="flex justify-center items-center text-center p-4">
                   <img
