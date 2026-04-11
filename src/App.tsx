@@ -18,6 +18,11 @@ import {
   CardTitle,
 } from "@/components/tailgrids/core/card";
 import { Badge } from "./components/tailgrids/core/badge";
+import {
+  ScrollArea,
+  ScrollAreaViewport,
+  ScrollBar,
+} from "./components/tailgrids/core/scroll-area";
 
 const tech = [
   { title: "vue", img: null, link: null },
@@ -286,7 +291,7 @@ export default function App() {
           </div>
         </div>
       </section>
-      <section className="h-[80vh]">
+      <section className="py-20">
         <div className="container space-y-8">
           <div className="flex justify-between">
             <div className="max-w-md">
@@ -313,7 +318,6 @@ export default function App() {
                         className="rounded-xl grayscale hover:grayscale-0 opacity-50 hover:opacity-100"
                         alt=""
                       />
-                    
                     </div>
                   </div>
                 )}
@@ -321,14 +325,14 @@ export default function App() {
                   <h2 className="font-semibold text-xl capitalize">
                     {item.title}
                   </h2>
-                  
+
                   <div className="flex justify-between">
                     <div>
                       <h4>Platform :</h4>
                       <ul className="p-2 flex gap-2">
                         {item.type.map((item, index) => (
                           <li key={index}>
-                            <Badge>{type[item - 1]}</Badge>
+                            <Badge className="uppercase font-normal text-[10px] px-3 py-1">{type[item - 1]}</Badge>
                           </li>
                         ))}
                       </ul>
@@ -338,27 +342,32 @@ export default function App() {
                       <ul className="p-2 flex gap-2">
                         {item.category.map((item, index) => (
                           <li key={index}>
-                            <Badge>{category[item - 1]}</Badge>
+                            <Badge className="uppercase font-normal text-[10px] px-3 py-1">{category[item - 1]}</Badge>
                           </li>
                         ))}
                       </ul>
                     </div>
                   </div>
-                  <p>{item.desc.slice(0, 120) ?? "-"}..</p>
+                  <p>{item.desc.slice(0, 150) ?? "-"}..</p>
                   {item.tech && (
                     <>
                       <h4>Architect :</h4>
-                      <ul className="flex flex-wrap gap-2">
-                        {item.tech.map((item, index) => (
-                          <li key={index}>
-                            <Badge>{tech[item - 1].title}</Badge>
-                          </li>
-                        ))}
-                      </ul>
+                      <ScrollArea className="w-full">
+                        <ScrollAreaViewport>
+                          <ul className="flex gap-2 pb-2">
+                            {item.tech.map((item, index) => (
+                              <li key={index} className="shrink-0">
+                                <Badge className="uppercase font-normal text-[10px] px-3 py-1">{tech[item - 1].title}</Badge>
+                              </li>
+                            ))}
+                          </ul>
+                        </ScrollAreaViewport>
+                        <ScrollBar orientation="horizontal" />
+                      </ScrollArea>
                     </>
                   )}
                 </CardContent>
-                {/* <CardFooter className="flex justify-between">
+                <CardFooter className="flex justify-between">
                   <Button
                     size="sm"
                     variant="primary"
@@ -368,7 +377,7 @@ export default function App() {
                   >
                     {item.link ? "Live Preview" : "Private"}
                   </Button>
-                </CardFooter> */}
+                </CardFooter>
               </Card>
             ))}
           </div>
