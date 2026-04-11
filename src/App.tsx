@@ -19,11 +19,11 @@ import {
 } from "@/components/tailgrids/core/card";
 import { Badge } from "./components/tailgrids/core/badge";
 
-const skills = [
+const tech = [
   { title: "vue", img: null, link: null },
   { title: "nuxt", img: null, link: null },
   { title: "react", img: null, link: null },
-  { title: "next js", img: null, link: null },
+  { title: "redis", img: null, link: null },
   { title: "react native", img: null, link: null },
   { title: "next js", img: null, link: null },
   { title: "vite", img: null, link: null },
@@ -43,6 +43,8 @@ const skills = [
   { title: "web3", img: null, link: null },
   { title: "tailwind", img: null, link: null },
   { title: "bootstrap", img: null, link: null },
+  { title: "jquery", img: null, link: null },
+  { title: "laravel", img: null, link: null },
 ];
 
 const type = ["website", "mobile"];
@@ -55,47 +57,53 @@ const portfolio = [
     desc: "Designed and developed a product website complete with brand color guidelines, alongside a mobile app built to streamline and empower the sales team in their daily selling activities.",
     type: [1, 2],
     category: [1],
-    img: null,
-    link: null,
+    tech: [25, 24, 23, 9, 16],
+    img: "https://res.cloudinary.com/dyylkbigz/image/upload/v1775884085/portfolio/Screenshot_2026-04-11_at_12.07.42_vgppge.png",
+    link: "https://sci-paint.com/",
   },
   {
     title: "adglow pictures",
     desc: "Built a cinematic portfolio website to highlight and archive film productions, featuring release histories, synopses, and behind-the-scenes content for movies that have premiered in theaters.",
     type: [1],
     category: [1],
-    img: null,
-    link: null,
+    tech: [1, 2, 11, 22],
+    img: "https://res.cloudinary.com/dyylkbigz/image/upload/v1775884087/portfolio/Screenshot_2026-04-11_at_12.07.33_ywbt86.png",
+    link: "https://adglow.co.id/",
   },
   {
     title: "seven jaya sentosa",
     desc: "Built a digital plastic product catalog website, enabling broader product promotion with a clean, accessible display of product variants, specifications, and categories for potential customers and business partners.",
     type: [1, 2],
     category: [1],
-    img: null,
-    link: null,
+    tech: [3, 7, 22],
+    img: "https://res.cloudinary.com/dyylkbigz/image/upload/v1775884370/portfolio/Screenshot_2026-04-11_at_12.12.36_oyrbkw.png",
+    link: "https://sevenjayasentosa.com/",
   },
   {
     title: "jiwanta thermal springs",
     desc: "Designed and developed a website for a hot spring resort and hotel, complete with an integrated hotel booking system that allows guests to check availability, select rooms, and make reservations online with ease.",
     type: [1],
     category: [1],
-    img: null,
-    link: null,
+    tech: [3, 6, 10, 14],
+    img: "https://res.cloudinary.com/dyylkbigz/image/upload/v1775886214/portfolio/Screenshot_2026-04-11_at_12.42.51_y6fgka.png",
+    link: "https://app.jiwantathermalsprings.com/",
   },
   {
     title: "central bangun mandiri",
     desc: "Designed and developed a marketing website for a professional painting contractor, showcasing services, past projects, and contact information to attract more clients and expand business reach.",
     type: [1],
     category: [1],
-    img: null,
-    link: null,
+    tech: [25, 24, 23, 9],
+    img: "https://res.cloudinary.com/dyylkbigz/image/upload/v1775884537/portfolio/Screenshot_2026-04-11_at_12.15.23_nllisj.png",
+    link: "http://cbm.co.id/",
   },
   {
     title: "kopi kamana",
     desc: "Designed and developed a Point of Sale system across web and mobile platforms, featuring a cashier interface, sales transaction management, and financial reporting tools to support accounting needs.",
     type: [1, 2],
     category: [1],
-    img: null,
+    tech: [3, 4, 5, 6, 12, 14, 22, 10],
+    img: "https://res.cloudinary.com/dyylkbigz/image/upload/v1775884682/portfolio/Screenshot_2026-04-11_at_12.17.46_q5pwux.png",
     link: null,
   },
   {
@@ -103,24 +111,27 @@ const portfolio = [
     desc: "Designed and developed a fundraising website on the Solana network, integrated with an autopilot token listing system on Pump.fun to streamline the token launch and fundraising process.",
     type: [1],
     category: [2],
-    img: null,
-    link: null,
+    tech: [3, 6, 10, 14, 20],
+    img: "https://res.cloudinary.com/dyylkbigz/image/upload/v1775884726/portfolio/Screenshot_2026-04-11_at_12.18.33_tv8jgx.png",
+    link: "https://zkforge.io/",
   },
   {
     title: "zenix launcher",
     desc: "Designed and developed a fundraising website for an upcoming crypto token launch, providing project information, tokenomics, roadmap, and a contribution mechanism to attract early investors.",
     type: [1],
     category: [2],
-    img: null,
-    link: null,
+    tech: [3, 6, 10, 14, 20],
+    img: "https://res.cloudinary.com/dyylkbigz/image/upload/v1775884797/portfolio/Screenshot_2026-04-11_at_12.19.42_mz15ge.png",
+    link: "https://zenixapp.pro/",
   },
   {
     title: "entry point",
     desc: "Designed and developed a crypto token fundraising website built for the Base network, featuring project details, tokenomics, roadmap, and a presale contribution system integrated with Base compatible wallets.",
     type: [1],
     category: [2],
-    img: null,
-    link: null,
+    tech: [3, 6, 10, 14, 20],
+    img: "https://res.cloudinary.com/dyylkbigz/image/upload/v1775884835/portfolio/Screenshot_2026-04-11_at_12.20.24_y0luyo.png",
+    link: "https://entrypoint.fund/",
   },
 ];
 
@@ -291,28 +302,73 @@ export default function App() {
               </p>
             </div>
           </div>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-3 gap-6">
             {portfolio.map((item, index) => (
-              <Card className="bg-dark-2" key={index}>
-                <div>
-                  <div className="h-[300px] bg-dark m-2 rounded-xl" />
-                </div>
-                <CardContent className="pb-2">
+              <Card className="bg-dark border border-dark-2 p-4" key={index}>
+                {item.img && (
+                  <div className="p-2">
+                    <div className="relative">
+                      <img
+                        src={item.img}
+                        className="rounded-xl grayscale hover:grayscale-0 opacity-50 hover:opacity-100"
+                        alt=""
+                      />
+                    
+                    </div>
+                  </div>
+                )}
+                <CardContent className="pb-2 space-y-4">
                   <h2 className="font-semibold text-xl capitalize">
                     {item.title}
                   </h2>
-                  <ul className="flex gap-2">
-                    <li>
-                      <Badge>Vite</Badge>
-                    </li>
-                  </ul>
-                  <p>{item.desc ?? "-"}</p>
+                  
+                  <div className="flex justify-between">
+                    <div>
+                      <h4>Platform :</h4>
+                      <ul className="p-2 flex gap-2">
+                        {item.type.map((item, index) => (
+                          <li key={index}>
+                            <Badge>{type[item - 1]}</Badge>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <h4>Type :</h4>
+                      <ul className="p-2 flex gap-2">
+                        {item.category.map((item, index) => (
+                          <li key={index}>
+                            <Badge>{category[item - 1]}</Badge>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                  <p>{item.desc.slice(0, 120) ?? "-"}..</p>
+                  {item.tech && (
+                    <>
+                      <h4>Architect :</h4>
+                      <ul className="flex flex-wrap gap-2">
+                        {item.tech.map((item, index) => (
+                          <li key={index}>
+                            <Badge>{tech[item - 1].title}</Badge>
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  )}
                 </CardContent>
-                <CardFooter className="flex justify-between">
-                  <Button size="sm" type="button">
-                    Live Preview
+                {/* <CardFooter className="flex justify-between">
+                  <Button
+                    size="sm"
+                    variant="primary"
+                    type="button"
+                    disabled={!item.link}
+                    className="font-normal w-full"
+                  >
+                    {item.link ? "Live Preview" : "Private"}
                   </Button>
-                </CardFooter>
+                </CardFooter> */}
               </Card>
             ))}
           </div>
