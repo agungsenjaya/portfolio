@@ -21,7 +21,7 @@ export default function Header() {
             <a href="">Contact Us</a>
           </li>
           <li className="underline underline-offset-8">
-            <a href="">Github</a>
+            <a href="https://github.com/agungsenjaya" target="_blank">Github</a>
           </li>
         </ul>
       </div>

@@ -406,15 +406,22 @@ export default function App() {
                     )}
                   </CardContent>
                   <CardFooter className="flex justify-between">
-                    <Button
-                      size="sm"
-                      variant="primary"
-                      type="button"
-                      disabled={!item.link}
-                      className={`w-full ${item.link ? "opacity-100" : "opacity-0"}`}
+                    <a
+                      href={item.link ? item.link : "#"}
+                      target={item.link ? "_blank" : "_parent"}
+                      rel="noopener noreferrer"
+                      className="w-full"
                     >
-                      {item.link ? "Visit Site" : "Private"}
-                    </Button>
+                      <Button
+                        size="sm"
+                        variant="primary"
+                        type="button"
+                        disabled={!item.link}
+                        className={`w-full ${item.link ? "opacity-100" : "opacity-0"}`}
+                      >
+                        {item.link ? "Visit Site" : "Private"}
+                      </Button>
+                    </a>
                   </CardFooter>
                 </Card>
               </SwiperSlide>
@@ -454,13 +461,15 @@ export default function App() {
             Save my resume for call me in the future
           </h4>
           <div>
-            <Button
-              type="button"
-              className="!bg-dark !text-white w-[300px] flex items-center"
-            >
-              <RiFilePdf2Line />
-              Download Resume
-            </Button>
+            <a href="/pdf/agung_senjaya.pdf" target="_blank">
+              <Button
+                type="button"
+                className="!bg-dark !text-white w-[300px] flex items-center"
+              >
+                <RiFilePdf2Line />
+                Download Resume
+              </Button>
+            </a>
           </div>
         </div>
       </section>
@@ -475,15 +484,29 @@ export default function App() {
           <ul className="space-y-8 divide-y divide-dark-4">
             <li className="flex justify-between pb-8">
               <p>Email address</p>
-              <h4>agungsenjaya813@gmail.com</h4>
+              <a className="underline" href="mailto:agungsenjaya813@gmail.com">
+                <h4>agungsenjaya813@gmail.com</h4>
+              </a>
             </li>
             <li className="flex justify-between pb-8">
               <p>Whatsapp</p>
-              <h4>+62 857 - 5979 - 4605</h4>
+              <a
+                className="underline"
+                href="http://wa.me/6285759794605"
+                target="_blank"
+              >
+                <h4>+62 857 - 5979 - 4605</h4>
+              </a>
             </li>
             <li className="flex justify-between pb-8">
               <p>Telegram</p>
-              <h4>@Agungsenja</h4>
+              <a
+                className="underline"
+                href="https://t.me/Agungsenja"
+                target="_blank"
+              >
+                <h4>@Agungsenja</h4>
+              </a>
             </li>
           </ul>
           <div className="flex justify-between">
