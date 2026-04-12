@@ -197,11 +197,11 @@ export default function App() {
   return (
     <>
       <Header />
-      <div className="bg-[url('https://etherscan.io/images/svg/waves-light.svg')] border-b border-dark-2">
-      <div className="h-[80px]"/>
+      <div id="about" className="bg-[url('https://etherscan.io/images/svg/waves-light.svg')] border-b border-dark-2">
+        <div className="h-[80px]" />
         <section>
           <div className="relative overflow-hidden">
-            <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 z-20 relative px-4 lg:px-0">
+            <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 z-10 md:z-20 relative px-4 lg:px-0">
               <div className="self-end mb-10 space-y-4 order-2 md:order-1 mt-10 md:mt-0 text-center md:text-left">
                 <p>
                   Full-stack developer specializing in Web2 and Web3
@@ -211,7 +211,13 @@ export default function App() {
                 </p>
               </div>
               <div className="relative order-1 md:order-2">
-                <img src="/img/foto.png" className="w-full" alt="" />
+                <div className="flex justify-center">
+                  <img
+                    src="/img/foto.png"
+                    className="w-[300px] md:w-full"
+                    alt=""
+                  />
+                </div>
                 <div className="absolute bottom-0 left-0 right-0 h-[200px] bg-linear-to-t from-dark from-45% to-dark/0" />
               </div>
 
@@ -221,7 +227,7 @@ export default function App() {
                 </h2>
               </div>
             </div>
-            <div className="absolute top-0 bottom-0 left-0 right-0 flex justify-center items-center z-10 pointer-events-none">
+            <div className="absolute top-0 bottom-0 left-0 right-0 flex justify-center items-center z-20 md:z-10 pointer-events-none">
               <div className="container mx-auto space-y-2 px-6 md:px-40">
                 <h2 className="text-lg md:text-xl font-super text-center md:text-left">
                   Software Engineer
@@ -299,7 +305,7 @@ export default function App() {
           </div>
         </div>
       </section>
-      <section className="py-10 md:py-20 px-4 lg:px-0">
+      <section id="portfolio" className="py-10 md:py-20 px-4 lg:px-0">
         <div className="container mx-auto space-y-8">
           <div className="flex flex-col md:flex-row justify-between gap-6">
             <div className="max-w-md">
@@ -474,7 +480,7 @@ export default function App() {
           </div>
         </div>
       </section>
-      <section className="py-10 md:py-20 bg-[url('https://etherscan.io/images/svg/waves-light.svg')] px-4 lg:px-0">
+      <section id="contact" className="py-10 md:py-20 bg-[url('https://etherscan.io/images/svg/waves-light.svg')] px-4 lg:px-0">
         <div className="container mx-auto space-y-8">
           <div>
             <h4 className="text-xl md:text-2xl max-w-lg">
@@ -513,7 +519,9 @@ export default function App() {
             </li>
           </ul>
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-4 sm:pt-0 text-center sm:text-left">
-            <h4 className="text-sm md:text-base">© 2026 Agung Senjaya. All rights reserved</h4>
+            <h4 className="text-sm md:text-base">
+              © 2026 Agung Senjaya. All rights reserved
+            </h4>
             <div className="animate-spin [animation-duration:3000ms]">
               <img src="/img/icon.png" className="w-[18px]" alt="" />
             </div>
