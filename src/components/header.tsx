@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence, animate } from "motion/react";
-import { RiMenu3Line, RiCloseLine } from "react-icons/ri";
+import { RiMenu4Fill, RiCloseLine } from "react-icons/ri";
+import { Button } from "./tailgrids/core/button";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -44,12 +45,12 @@ export default function Header() {
       transition={{ duration: 0.3 }}
     >
       <div className="container mx-auto flex justify-between items-center px-4 md:px-0">
-        <div className="flex gap-2 items-center">
+        <a href="/" className="flex gap-2 items-center">
           <div className="animate-spin [animation-duration:3000ms]">
             <img src="/img/icon.png" className="w-[18px]" alt="" />
           </div>
           <h4 className="text-xl font-semibold">Agung Senjaya</h4>
-        </div>
+        </a>
         <ul className="hidden md:flex gap-18 text-xl">
           {navLinks.map((link) => (
             <li key={link.label} className="underline underline-offset-8">
@@ -63,24 +64,26 @@ export default function Header() {
             </li>
           ))}
         </ul>
-        <button
+        <Button
           className="md:hidden text-2xl"
           onClick={() => setMenuOpen(!menuOpen)}
+          iconOnly
+          size="xs"
         >
-          {menuOpen ? <RiCloseLine /> : <RiMenu3Line />}
-        </button>
+          {menuOpen ? <RiCloseLine /> : <RiMenu4Fill />}
+        </Button>
       </div>
       <AnimatePresence>
         {menuOpen && (
           <motion.ul
-            className="md:hidden container mx-auto flex flex-col gap-8 pt-4 pb-2 text-xl overflow-hidden"
+            className="md:hidden container mx-auto flex flex-col gap-8 pt-8 pb-2 text-xl overflow-hidden"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
             {navLinks.map((link) => (
-              <li key={link.label} className="underline underline-offset-8">
+              <li key={link.label} className="underline underline-offset-8 px-8">
                 <a
                   href={link.href}
                   target={link.href.startsWith("http") ? "_blank" : undefined}
