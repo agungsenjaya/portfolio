@@ -201,8 +201,8 @@ export default function App() {
       <div className="h-[80px]"/>
         <section>
           <div className="relative overflow-hidden">
-            <div className="container mx-auto grid grid-cols-3 z-20 relative">
-              <div className="self-end mb-10 space-y-4">
+            <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 z-20 relative px-4 lg:px-0">
+              <div className="self-end mb-10 space-y-4 order-2 md:order-1 mt-10 md:mt-0 text-center md:text-left">
                 <p>
                   Full-stack developer specializing in Web2 and Web3
                   applications, crafting modern, high-performance digital
@@ -210,20 +210,20 @@ export default function App() {
                   the gap between traditional and decentralized web ecosystems.
                 </p>
               </div>
-              <div className="relative">
+              <div className="relative order-1 md:order-2">
                 <img src="/img/foto.png" className="w-full" alt="" />
                 <div className="absolute bottom-0 left-0 right-0 h-[200px] bg-linear-to-t from-dark from-45% to-dark/0" />
               </div>
 
-              <div className="self-end mb-10 text-end">
+              <div className="hidden md:block self-end mb-10 text-end order-3">
                 <h2 className="text-xl underline underline-offset-6">
                   Scroll Down
                 </h2>
               </div>
             </div>
-            <div className="absolute top-0 bottom-0 left-0 right-0 flex justify-center items-center z-10">
-              <div className="container mx-auto space-y-2 px-40">
-                <h2 className="text-xl font-super text-left">
+            <div className="absolute top-0 bottom-0 left-0 right-0 flex justify-center items-center z-10 pointer-events-none">
+              <div className="container mx-auto space-y-2 px-6 md:px-40">
+                <h2 className="text-lg md:text-xl font-super text-center md:text-left">
                   Software Engineer
                 </h2>
                 {/* sectionRef here so scroll tracks the hero section from top */}
@@ -237,7 +237,7 @@ export default function App() {
                     }}
                   >
                     <motion.h1
-                      className="text-8xl font-semibold text-start"
+                      className="text-6xl md:text-8xl font-semibold text-start"
                       initial={{ opacity: 0, x: "10%", filter: "blur(10px)" }}
                       animate={
                         showInitial
@@ -258,7 +258,7 @@ export default function App() {
                     }}
                   >
                     <motion.h1
-                      className="text-8xl font-semibold text-right"
+                      className="text-6xl md:text-8xl font-semibold text-right"
                       initial={{ opacity: 0, x: "-10%", filter: "blur(10px)" }}
                       animate={
                         showInitial
@@ -276,38 +276,38 @@ export default function App() {
           </div>
         </section>
       </div>
-      <section className="py-20">
+      <section className="py-10 md:py-20 px-4 lg:px-0">
         <div className="container mx-auto space-y-4">
           {/* <h2 className="text-2xl">Information</h2> */}
-          <div className="grid grid-cols-4 divide-x divide-dark-2">
-            <div className="py-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-dark-2">
+            <div className="pb-8 md:py-8">
               <p>Education</p>
               <h4>Vocational High School</h4>
             </div>
-            <div className="pl-10 py-8">
+            <div className="md:pl-10 pt-8 py-8">
               <p>Language</p>
               <h4>Indonesia, English</h4>
             </div>
-            <div className="pl-10 py-8">
+            <div className="md:pl-10 pt-8 py-8">
               <p>Born</p>
               <h4>Sukabumi, 30 July 1995</h4>
             </div>
-            <div className="pl-10 py-8">
+            <div className="md:pl-10 pt-8 py-8">
               <p>Living</p>
-              <h4 className="capialize">Sukabumi, Jawa Barat indonesia</h4>
+              <h4 className="capitalize">Sukabumi, Jawa Barat indonesia</h4>
             </div>
           </div>
         </div>
       </section>
-      <section className="py-20">
+      <section className="py-10 md:py-20 px-4 lg:px-0">
         <div className="container mx-auto space-y-8">
-          <div className="flex justify-between">
+          <div className="flex flex-col md:flex-row justify-between gap-6">
             <div className="max-w-md">
-              <h1 className="text-5xl font-semibold capitalize">
+              <h1 className="text-4xl md:text-5xl font-semibold capitalize">
                 Latest project showcase
               </h1>
             </div>
-            <div className="max-w-2xl space-y-2">
+            <div className="max-w-2xl space-y-4 md:space-y-2">
               <p>
                 Trusted by clients to bring their ideas to life — from concept
                 to deployment, delivering products they're proud to call their
@@ -430,23 +430,23 @@ export default function App() {
           </Swiper>
         </div>
       </section>
-      <section className="py-20">
+      <section className="py-10 md:py-20 px-4 lg:px-0">
         <div className="container mx-auto space-y-8">
           <div>
-            <h1 className="text-5xl font-semibold capitalize">
+            <h1 className="text-4xl md:text-5xl font-semibold capitalize">
               Architect skill
             </h1>
-            <p className="max-w-3xl">
+            <p className="max-w-3xl mt-4 md:mt-0">
               A curated collection of technologies and frameworks I work with
               across full-stack development from frontend and mobile to backend,
               database, devops, and blockchain.
             </p>
           </div>
-          <div className="grid grid-cols-5">
+          <div className="grid grid-cols-2 md:grid-cols-5">
             {tech.map((item, index) => (
               <div
                 key={index}
-                className="border-b border-r border-white/20 p-4 [&:nth-child(5n)]:border-r-0 [&:nth-child(-n+5)]:border-t-0 [&:nth-child(5n+1)]:border-l-0 [&:nth-child(n+21)]:border-b-0"
+                className="border-b border-r border-white/20 p-4 max-md:[&:nth-child(2n)]:border-r-0 md:[&:nth-child(5n)]:border-r-0 max-md:[&:nth-child(n+25)]:border-b-0 md:[&:nth-child(n+21)]:border-b-0"
               >
                 <div className="flex justify-center items-center text-center p-4">
                   <img src={item.img} className={`invert w-[150px]`} alt="" />
@@ -456,13 +456,13 @@ export default function App() {
           </div>
         </div>
       </section>
-      <section className="py-20 bg-white light">
-        <div className="mx-auto max-w-3xl flex justify-between items-center">
-          <h4 className="text-4xl font-super text-dark max-w-sm">
+      <section className="py-10 md:py-20 bg-white light px-4 lg:px-0">
+        <div className="mx-auto max-w-3xl flex flex-col md:flex-row justify-between items-center gap-8">
+          <h4 className="text-3xl md:text-4xl font-super text-dark max-w-sm text-center md:text-left">
             Save my resume for call me in the future
           </h4>
           <div>
-            <a href="/pdf/agung_senjaya.pdf" target="_blank">
+            <a href="/pdf/agung_senjaya.pdf" target="_blank" rel="noreferrer">
               <Button
                 type="button"
                 className="!bg-dark !text-white w-[300px] flex items-center"
@@ -474,44 +474,46 @@ export default function App() {
           </div>
         </div>
       </section>
-      <section className="py-20 bg-[url('https://etherscan.io/images/svg/waves-light.svg')]">
+      <section className="py-10 md:py-20 bg-[url('https://etherscan.io/images/svg/waves-light.svg')] px-4 lg:px-0">
         <div className="container mx-auto space-y-8">
           <div>
-            <h4 className="text-2xl max-w-lg">
+            <h4 className="text-xl md:text-2xl max-w-lg">
               Contact me if you are interested for partners or build anything
               you want
             </h4>
           </div>
-          <ul className="space-y-8 divide-y divide-dark-4">
-            <li className="flex justify-between pb-8">
+          <ul className="space-y-4 md:space-y-8 divide-y divide-dark-4">
+            <li className="flex flex-col sm:flex-row sm:justify-between pb-4 sm:pb-8 pt-4 sm:pt-0 first:pt-0 gap-2">
               <p>Email address</p>
               <a className="underline" href="mailto:agungsenjaya813@gmail.com">
                 <h4>agungsenjaya813@gmail.com</h4>
               </a>
             </li>
-            <li className="flex justify-between pb-8">
+            <li className="flex flex-col sm:flex-row sm:justify-between pb-4 sm:pb-8 pt-4 sm:pt-0 gap-2">
               <p>Whatsapp</p>
               <a
                 className="underline"
                 href="http://wa.me/6285759794605"
                 target="_blank"
+                rel="noreferrer"
               >
                 <h4>+62 857 - 5979 - 4605</h4>
               </a>
             </li>
-            <li className="flex justify-between pb-8">
+            <li className="flex flex-col sm:flex-row sm:justify-between pb-4 sm:pb-8 pt-4 sm:pt-0 gap-2">
               <p>Telegram</p>
               <a
                 className="underline"
                 href="https://t.me/Agungsenja"
                 target="_blank"
+                rel="noreferrer"
               >
                 <h4>@Agungsenja</h4>
               </a>
             </li>
           </ul>
-          <div className="flex justify-between">
-            <h4>© 2026 Agung Senjaya. All rights reserved</h4>
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-4 sm:pt-0 text-center sm:text-left">
+            <h4 className="text-sm md:text-base">© 2026 Agung Senjaya. All rights reserved</h4>
             <div className="animate-spin [animation-duration:3000ms]">
               <img src="/img/icon.png" className="w-[18px]" alt="" />
             </div>
