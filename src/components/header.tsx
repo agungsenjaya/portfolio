@@ -1,8 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { motion } from "motion/react";
 
 export default function Header() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 0);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="py-4">
+    <motion.header
+      className={`fixed w-full top-0 z-50 py-4 ${scrolled ? "backdrop-blur-md" : ""}`}
+      animate={{
+        backgroundColor: scrolled ? "#111928" : "rgba(17, 25, 40, 0)",
+      }}
+      transition={{ duration: 0.3 }}
+    >
       <div className="container mx-auto flex justify-between">
         <div className="flex gap-2 items-center">
           <div className="animate-spin [animation-duration:3000ms]">
@@ -25,6 +40,6 @@ export default function Header() {
           </li>
         </ul>
       </div>
-    </header>
+    </motion.header>
   );
 }

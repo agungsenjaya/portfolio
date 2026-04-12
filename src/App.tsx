@@ -196,8 +196,9 @@ export default function App() {
 
   return (
     <>
+      <Header />
       <div className="bg-[url('https://etherscan.io/images/svg/waves-light.svg')] border-b border-dark-2">
-        <Header />
+      <div className="h-[80px]"/>
         <section>
           <div className="relative overflow-hidden">
             <div className="container mx-auto grid grid-cols-3 z-20 relative">
