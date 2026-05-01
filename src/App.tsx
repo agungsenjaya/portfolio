@@ -351,7 +351,7 @@ export default function App() {
               <SwiperSlide key={index}>
                 <Card className="bg-dark border border-dark-2 p-4">
                   {item.img && (
-                    <div className="p-2 rounded-xl grayscale hover:grayscale-0 opacity-30 hover:opacity-100">
+                    <div className="p-2 rounded-xl grayscale hover:grayscale-0 ">
                       <div className="relative">
                         <img src={item.img} alt="" />
                         <div className="absolute top-0 bottom-0 left-0 right-0">
